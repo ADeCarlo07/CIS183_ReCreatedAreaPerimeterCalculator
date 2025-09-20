@@ -1,5 +1,6 @@
 package com.example.cis183_recreatedareaperimetercalculator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,6 +26,11 @@ public class MainActivity extends AppCompatActivity {
 
     SpinnerAdapter spinnerAdapter;
 
+    Intent squareActivity;
+    Intent rectangleActivity;
+    Intent circleActivity;
+    Intent triangleActivity;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        spn_j_shapes = findViewById(R.id.spn_v_shapes);
+
 
         String[] shapes = new String[]{"Square", "Rectangle", "Circle", "Triangle"};
         spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, shapes);
@@ -47,7 +55,16 @@ public class MainActivity extends AppCompatActivity {
         btn_j_squarego = findViewById(R.id.btn_v_squarego);
         btn_j_trianglego = findViewById(R.id.btn_v_trianglego);
 
+        squareActivity = new Intent(MainActivity.this, SquareActivity.class);
+        rectangleActivity = new Intent(MainActivity.this, RectangleActivity.class);
+        circleActivity = new Intent(MainActivity.this, CircleActivity.class);
+        triangleActivity = new Intent(MainActivity.this, TriangleActivity.class);
+
         spinnerChangeListener();
+        buttonClickListenerGoToSquare();
+        buttonClickListenerGoToRectangle();
+        buttonClickListenerGoToCircle();
+        buttonClickListenerGoToTriangle();
     }
 
     public void spinnerChangeListener()
@@ -116,6 +133,51 @@ public class MainActivity extends AppCompatActivity {
     {
         btn.setVisibility(View.INVISIBLE);
     }
+
+    public void buttonClickListenerGoToSquare()
+    {
+        btn_j_squarego.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(squareActivity);
+            }
+        });
+    }
+
+    public void buttonClickListenerGoToRectangle()
+    {
+       btn_j_rectanglego.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               startActivity(rectangleActivity);
+           }
+       });
+    }
+
+    public void buttonClickListenerGoToCircle()
+    {
+        btn_j_circlego.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(circleActivity);
+            }
+        });
+    }
+
+    public void buttonClickListenerGoToTriangle()
+    {
+        btn_j_trianglego.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(triangleActivity);
+            }
+        });
+    }
+
+
+
+
+
 
 
 }
